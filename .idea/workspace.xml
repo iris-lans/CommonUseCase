@@ -4,31 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5323510-6dc9-424a-be6b-fb9b66ca9ddf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CommonUseCase.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CommonUseCase.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f5323510-6dc9-424a-be6b-fb9b66ca9ddf" name="Default Changelist" comment="2025.06.09测试数据">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baseSpider.log" beforeDir="false" afterPath="$PROJECT_DIR$/baseSpider.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_interface/DBHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/public_interface/DBHelper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_interface/DateTimeUtil.py" beforeDir="false" afterPath="$PROJECT_DIR$/public_interface/DateTimeUtil.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_interface/PrpCrypt.py" beforeDir="false" afterPath="$PROJECT_DIR$/public_interface/PrpCrypt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_interface/baseSpider.log" beforeDir="false" afterPath="$PROJECT_DIR$/public_interface/baseSpider.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.log" beforeDir="false" afterPath="$PROJECT_DIR$/run.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_bbs_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_bbs_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/baseSpider.log" beforeDir="false" afterPath="$PROJECT_DIR$/service/baseSpider.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/run.log" beforeDir="false" afterPath="$PROJECT_DIR$/service/run.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/baseSpider.log" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/baseSpider.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/login_sta.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/login_sta.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/models/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/models/driver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/page_obj/loginPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/page_obj/loginPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/page_obj/timeSelectionPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/page_obj/timeSelectionPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/page_obj/userSwitchingPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/page_obj/userSwitchingPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/point_select_sta.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/point_select_sta.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/run.log" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/run.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/run.log.2022-07-27" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/time_select_sta.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/time_select_sta.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/user_switch_sta.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/user_switch_sta.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +23,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "iris-lans"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:/iris-lans/CommonUseCase.git",
+    "accountId": "8aba8db7-32ab-4cc6-b4a7-0da702b95e7b"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -55,19 +44,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python 测试.Unittests for login_sta.login_sta.test_login6.executor": "Run",
-    "Python 测试.Unittests in login_sta.py.executor": "Run",
-    "Python 测试.point_select_sta.point_select_sta.test_check_radio 的 Python 测试.executor": "Run",
-    "Python.PrpCrypt.executor": "Run",
-    "Python.run_bbs_test.executor": "Run",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dev",
-    "last_opened_file_path": "E:/UIAutomation/CommonUseCase",
-    "settings.editor.selected.configurable": "vcs.Git"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python 测试.Unittests for login_sta.login_sta.test_login6.executor&quot;: &quot;Run&quot;,
+    &quot;Python 测试.Unittests in login_sta.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python 测试.point_select_sta.point_select_sta.test_check_radio 的 Python 测试.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PrpCrypt.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run_bbs_test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/UIAutomation/CommonUseCase&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\UIAutomation\CommonUseCase\test_case" />
@@ -199,6 +188,15 @@
       <option name="presentableId" value="Default" />
       <updated>1656324662017</updated>
     </task>
+    <task id="LOCAL-00001" summary="2025.06.09测试数据">
+      <option name="closed" value="true" />
+      <created>1749454266777</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1749454266777</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,6 +209,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="2025.06.09测试数据" />
+    <option name="LAST_COMMIT_MESSAGE" value="2025.06.09测试数据" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
