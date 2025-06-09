@@ -8,9 +8,6 @@
 @Date ：2022/7/7 15:58 
 '''
 
-# -*-coding:utf-8-*-
-# _author_ = "janehost"
-
 from selenium import webdriver
 import importlib,sys
 

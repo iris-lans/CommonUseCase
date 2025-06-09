@@ -28,14 +28,30 @@ class timeSelectionPage(page):
     last_data_loc = (By.CLASS_NAME, 'ant-picker-header-prev-btn')
     # 选择日期
     check_datetime_loc = (By.XPATH, '//*[@class="ant-picker-body"]/table/tbody/tr[1]/td[6]')
+    # 选择结束日期
+    check_day_end_loc = (By.XPATH, '//*[@class="ant-picker-body"]/table/tbody/tr[4]/td[6]')
+    # 选择结束日期
+    check_datetime_end_loc = (By.XPATH, '//*[@class="ant-picker-body"]/table/tbody/tr[2]/td[1]')
     # 选择月份
     check_month_loc = (By.XPATH, '//*[@class="ant-picker-body"]/table/tbody/tr[1]/td[1]')
     # 选择年份
     check_year_loc = (By.XPATH, '//*[@class="ant-picker-body"]/table/tbody/tr[1]/td[2]')
+    # 自定义【时】时间选择确定按钮
+    check_customize_hour_confirm = (By.CLASS_NAME , "ant-picker-ok")
+    # 获取中间时间端电量区间
+    judgment_customize_hour_loc = (By.XPATH,"//*[@class='power-fee__card-wraper']/div[2]/div[2]/p[2]")
+    # 点击自定义【日】选择
+    check_customize_day_loc = (By.CLASS_NAME,"filter-btn__day")
+    # 点击自定义【日】时间弹窗选择
+    check_customize_day_input = (By.CSS_SELECTOR,".ant-picker-input.ant-picker-input-active")
+
 
     # 判断是否成功
     # 电量电费、用电管理
     judgment_days_loc = (By.XPATH , "//section[@class='power-fee__card-wraper']/div[5]/div[2]/p[2]")
+    # 曲线图（用电统计）
+    echar_count = (By.XPATH , "//section[@class='power-fee__statistic']/div[2]")
+    echar_mouse = (By.XPATH , "//section[@class='power-fee__statistic']/div[2]/div[2]/p")  # 鼠标悬浮
     # 用电监测、电能质量
     echar_div_loc = (By.XPATH , "//div[@class='page-left-content__in']/div[2]/div/div/div[2]/div[1]/div[2]")
     floating_frame_loc = (By.XPATH , "//div[@class='page-left-content__in']/div[2]/div/div/div[2]/div[1]/div[2]/div[2]/div/div[1]")
@@ -98,3 +114,48 @@ class timeSelectionPage(page):
         ActionChains(self.driver).move_to_element(ele).perform()
         move_text = self.find_element(*self.floating_frame_loc).text
         return move_text
+
+    def check_hour_customize(self):
+        """ 自定义【时】起始时间选择 """
+        self.find_element(*self.last_data_loc).click()
+        sleep(2)
+        #data_text = self.find_element(*self.check_datetime_loc).text
+        self.find_element(*self.check_datetime_loc).click()
+        self.find_element(*self.check_customize_hour_confirm).click()
+        sleep(2)
+        self.find_element(*self.check_datetime_end_loc).click()
+        self.find_element(*self.check_customize_hour_confirm).click()
+
+    def judge_hour_customize(self):
+        """ 判断自定义【时】选择是否正确 """
+        hour_text = self.find_element(*self.judgment_customize_hour_loc).text
+        list = hour_text.split(" - ")
+        return list
+
+    def check_day_customize(self):
+        """ 点击自定义【日】 """
+        self.find_element(*self.check_customize_day_loc).click()
+
+    def check_day_customize_input(self):
+        """ 点击自定义【日】文本框 """
+        self.find_element(*self.check_customize_day_input).click()
+        sleep(2)
+        self.find_element(*self.last_data_loc).click()
+        sleep(2)
+        self.find_element(*self.check_datetime_loc).click()
+        self.find_element(*self.last_data_loc).click()
+        self.find_element(*self.check_day_end_loc).click()
+
+    def judge_day_customize(self):
+        """ 判断自定义【日】查询是否成功 """
+        hour_text = self.find_element(*self.judgment_customize_hour_loc).text
+        return hour_text
+
+
+
+
+    if __name__ == '__main__':
+        string = "11-02 03:00 - 11-02 04:00"
+        list = string.split(" - ")
+        print(list[0])
+

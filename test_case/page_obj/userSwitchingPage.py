@@ -37,6 +37,11 @@ class userSwitchingPage(page):
     check_into_page_loc = (By.CLASS_NAME , "top__btn")
     # 点击菜单栏
     check_menu_loc = (By.XPATH , "//div[@class='main__menu-container']/ul/li[2]")
+    # 获取首页“实时负荷”
+    real_time_load = (By.XPATH , "//div[@class='overview__data-statistic']/div[1]/div[2]/span[1]")
+
+
+
     # ----  点击监测点  ----
     # 下拉式,知电U、安电U
     click_point_loc = (By.CSS_SELECTOR , '.ant-dropdown-link.ant-dropdown-trigger')
@@ -95,6 +100,11 @@ class userSwitchingPage(page):
     def enter_inside_page(self):
         """ 点击进入内页 """
         self.find_element(*self.check_into_page_loc).click()
+
+    def judgment_load(self):
+        """ 获取实时负荷文本 """
+        load_text = self.find_element(*self.real_time_load).text
+        return load_text
 
     def check_menu(self):
         """ 点击菜单 """

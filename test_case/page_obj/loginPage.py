@@ -16,15 +16,15 @@ from time import sleep
 class login(page):
     url = '/'
     # 登录用户名的定位
-    login_username_loc = (By.ID, 'basic_username')
+    login_username_loc = (By.ID, 'user_name')
     # 登录密码的定位
-    login_password_loc = (By.ID, 'basic_password')
+    login_password_loc = (By.ID, 'password')
     # 登录按钮的定位
-    login_button_loc = (By.CSS_SELECTOR, '.ant-btn.login-btn.ant-btn-primary')
+    login_button_loc = (By.CSS_SELECTOR, '.ant-btn.css-1pu5atb.ant-btn-primary.ant-btn-background-ghost.submit-btn')
     # 登录错误提示的定位
-    login_error_loc = (By.CLASS_NAME, 'ant-form-item-explain')
+    login_error_loc = (By.CLASS_NAME, 'ant-form-item-explain-error')
     # 登录成功用户名信息
-    login_user_success_loc = (By.XPATH, "//div[@class='ant-dropdown-trigger']/div/strong")
+    login_user_success_loc = (By.XPATH, "//div[@class='tool-btn user']/div/p")
 
     # 登录用户名
     def login_username(self, username):

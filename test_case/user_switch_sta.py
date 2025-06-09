@@ -34,6 +34,12 @@ class user_switch_sta(myunit.launch_browser):
         time.sleep(2)
         self.driver.switch_to.window(self.driver.window_handles[-1])
         title_name = ap.successfully_entered()
+        us = userSwitchingPage(self.driver)
+        load_text = us.judgment_load()
+        while load_text == '0':
+            us.check_user_select()
+            num_s = random.randint(0, 10)
+            us.check_user(num_s)
         return title_name
 
 

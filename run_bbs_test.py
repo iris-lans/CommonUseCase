@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-'''
+"""
 运行测试用例
-@Project ：CommonUseCase 
+@Project ：CommonUseCase
 @File ：run_bbs_test.py
 @Author ：xie.xiaolan
-@Date ：2022/7/8 10:40 
-'''
+@Date ：2022/7/8 10:40
+"""
 
 from BeautifulReport import BeautifulReport
 from email.mime.text import MIMEText
@@ -22,12 +22,12 @@ mail_user="1289458872@qq.com"
 mail_pass="qmwvgugghvpgjifd"
 #===========================发送邮件============================
 def send_mail(to_list,file_new):
-    '''''
+    """''
     to_list:发给谁
     sub:主题
     content:内容
     send_mail("aaa@126.com","sub","content")
-    '''
+    """
     f = open(file_new, 'rb')
     mail_body = f.read()
     f.close()
@@ -74,8 +74,8 @@ if __name__ == '__main__':
     fp.close()
     file_path = new_report('./report/')
 
-    # if send_mail(mailto_list,file_path):
-    #     print (u"发送成功")
-    # else:
-    #     print(u"发送失败")
+    if send_mail(mailto_list,file_path):
+        print (u"发送成功")
+    else:
+        print(u"发送失败")
 

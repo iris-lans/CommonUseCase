@@ -1,23 +1,36 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-'''
+"""
 密码加密
-@Project ：CommonUseCase 
+@Project ：CommonUseCase
 @File ：PrpCrypt.py
 @Author ：xie.xiaolan
-@Date ：2022/7/6 14:06 
-'''
+@Date ：2022/7/6 14:06
+"""
 from Crypto.Cipher import AES
 from binascii import b2a_hex, a2b_hex
+import pymysql
 
 # 密钥
 AES_KEY = "HDOeKZpg6IUAOjd+"
+
+# 数据库配置
+DB_CONFIG = {
+    'host': '172.16.0.253',
+    'user': 'poweriot',
+    'password': 'power_iot456',
+    'database': 'micro_grid',
+    'port': 4000,
+    'charset': 'utf8mb4'
+}
 
 class PrpCrypt(object):
 
     def __init__(self, key=AES_KEY):
         self.key = key.encode('utf-8')
         self.mode = AES.MODE_CBC
+        self.conn = None
+        self.cursor = None
 
 
     def encrypt(self, text):
@@ -60,13 +73,71 @@ class PrpCrypt(object):
         # return plain_text.rstrip('\0')
         return bytes.decode(plain_text).rstrip('\0')
 
+    # noinspection PyShadowingNames
+    def generate_and_encrypt_password(self, return_plain=False):
+        """
+        生成一个8~20位的随机密码（包含至少两种类型：字母、数字、符号），并加密返回。
+        :param return_plain: 是否同时返回明文密码（默认否）
+        :return: 加密后的密码（如 return_plain 为 True，则返回元组：明文, 密文）
+        """
+        import random
+        import string
+
+        length = random.randint(8, 20)
+        letters = string.ascii_letters
+        digits = string.digits
+        symbols = string.punctuation
+
+        char_types = [letters, digits, symbols]
+        selected_types = random.sample(char_types, 2)
+
+        password = [random.choice(t) for t in selected_types]
+        all_chars = ''.join(char_types)
+        password += [random.choice(all_chars) for _ in range(length - len(password))]
+        random.shuffle(password)
+
+        raw_password = ''.join(password)
+        encrypted = self.encrypt(raw_password)
+
+        if return_plain:
+            return raw_password, encrypted
+        return encrypted
+
+    def save_password_to_mysql(self,plain_text, encrypted_text):
+        """
+        将明文和加密密码保存到 MySQL 数据库
+        :param plain_text: 明文
+        :param encrypted_text: 加密密文
+        :return:
+        """
+        try:
+            self.conn = pymysql.connect(**DB_CONFIG)
+            self.cursor = self.conn.cursor()
+            # 假设表名为 passwords，字段为 plain 和 encrypted
+            sql = "UPDATE micro_grid.user SET password = %s,name = %s WHERE phone_number = '19925374637'"
+            self.cursor.execute(sql, (encrypted_text,plain_text))
+            self.conn.commit()
+            print("密码已保存到数据库。")
+        except Exception as e:
+            print("数据库操作失败:", e)
+        finally:
+            self.cursor.close()
+            self.conn.close()
+
+
+
 
 if __name__ == '__main__':
     pc = PrpCrypt()  # 初始化
-    e = pc.encrypt("a123456789")  # 加密
-    print("加密:", e)
-    b = str(e, encoding='utf-8')
-    print(b)
-    e = "40a5f6aa6e737dfacde22e0f2132f6b1"
-    d = pc.decrypt(e)  # 解密
-    print("解密:", d)
+    # e = pc.encrypt("Longgang123..")  # 加密
+    # print("加密:", e)
+    # b = str(e, encoding='utf-8')
+    # print(b)
+    # e = "b56c91edc3ecdee432cd5e541e0f2a7b"
+    # d = pc.decrypt(e)  # 解密
+    # print("解密:", d)
+    plain, encrypted = pc.generate_and_encrypt_password(return_plain=True)
+    encrypted_str = str(encrypted, encoding='utf-8')
+    print("明文密码:", plain)
+    print("加密密码:", encrypted_str)
+    pc.save_password_to_mysql(plain,encrypted_str)

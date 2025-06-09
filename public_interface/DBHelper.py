@@ -34,12 +34,13 @@ logger.setLevel(logging.INFO)
 class DBHelper:
     # 构造函数
     # --- 测试数据库
-    # def __init__(self, host='172.18.1.252', user='poweriot',
-    #              pwd='power_iot123', db='power_iot'):
+    def __init__(self, host='172.18.1.248',port='4000', user='poweriot',
+                 pwd='power_iot123', db='power_iot'):
     # --- 生产数据库
-    def __init__(self, host='172.16.0.252', user='xiexiaolan',
-                     pwd='xxl2beauty', db='power_iot'):
+    # def __init__(self, host='172.16.0.253', port='4000', user='poweriot',
+    #                  pwd='power_iot456', db='power_iot'):
         self.host = host
+        self.port = port
         self.user = user
         self.pwd = pwd
         self.db = db
@@ -49,8 +50,8 @@ class DBHelper:
     # 连接数据库
     def connectDatabase(self):
         try:
-            self.conn = pymysql.connect(self.host, self.user,
-                                        self.pwd, self.db, charset='utf8')
+            self.conn = pymysql.connect(self.host, self.port, self.user,
+                                        self.pwd, self.db, charset='utf8mb4',cursorclass = pymysql.cursors.DictCursor)
         except:
             logger.error("connectDatabase failed")
             return False
@@ -91,7 +92,7 @@ class DBHelper:
         :return:
         """
         self.execute(sql, params)
-        return self.cur.fetchall()
+        return self.cur.f
 
 
     def fetchone(self, sql, params=None):
@@ -116,9 +117,10 @@ if __name__ == '__main__':
     #             'time'varchar(100),primary key('id'));"
     # result = dbhelper.execute(sql, None)
     #查询数据
-    sql = "SELECT count(*) as nu FROM `power_iot`.`user_product_auth` WHERE `user_id` = '52'"
-    result = dbhelper.fetchone(sql, None)
-    print(type(int(result[0])))
+    # sql = "SELECT count(*) as nu FROM `power_iot`.`user_product_auth` WHERE `user_id` = '52'"
+    sql = "SELECT * FROM `power_iot`.`user_product_auth`"
+    result = dbhelper.fetchall(sql, None)
+    print(result)
     if result:
         logger.info("查询成功")
     else:

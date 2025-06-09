@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-'''
+"""
 监测点选择
-@Project ：CommonUseCase 
+@Project ：CommonUseCase
 @File ：point_select_sta.py
 @Author ：xie.xiaolan
-@Date ：2022/8/18 14:48 
-'''
+@Date ：2022/8/18 14:48
+"""
 
 from test_case.models import myunit, function
 from test_case.page_obj.loginPage import login
@@ -83,7 +83,7 @@ class point_select_sta(myunit.launch_browser):
             me.check_selectNone()
             me.check_define()
             num_text = me.check_tips()
-            if num_text != "" or num_text != None:
+            if num_text != "" or num_text is not None:
                 function.insert_img(self.driver, "check_select_none.png")
             else:
                 print("全不选时，未做提示")
