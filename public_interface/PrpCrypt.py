@@ -16,7 +16,8 @@ AES_KEY = "HDOeKZpg6IUAOjd+"
 
 # 数据库配置
 DB_CONFIG = {
-    'host': '172.16.0.253',
+    # 'host': '172.16.0.253',   #内网地址
+    'host': '139.198.16.201',   #外网地址
     'user': 'poweriot',
     'password': 'power_iot456',
     'database': 'micro_grid',
