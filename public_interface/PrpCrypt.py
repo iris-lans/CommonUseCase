@@ -117,6 +117,23 @@ class PrpCrypt(object):
             self.cursor.close()
             self.conn.close()
 
+    def save_password_to_vpp_agg_db(self, encrypted_text):
+        """
+        保存密码到 vpp_agg 数据库
+        """
+        try:
+            self.conn = pymysql.connect(**get_db_config('vpp_agg'))
+            self.cursor = self.conn.cursor()
+            sql = "UPDATE vpp_agg.user SET password = %s WHERE phone_number = '19925374637'"
+            self.cursor.execute(sql, encrypted_text)
+            self.conn.commit()
+            print("密码已保存到 vpp_agg 数据库。")
+        except Exception as e:
+            print("vpp_agg 数据库操作失败:", e)
+        finally:
+            self.cursor.close()
+            self.conn.close()
+
 if __name__ == '__main__':
     pc = PrpCrypt()  # 初始化
     # e = pc.encrypt("Longgang123..")  # 加密
@@ -132,3 +149,4 @@ if __name__ == '__main__':
     print("加密密码:", encrypted_str)
     pc.save_password_to_mysql(plain, encrypted_str)
     pc.save_password_to_vpp_db(encrypted_str)
+    pc.save_password_to_vpp_agg_db(encrypted_str)
