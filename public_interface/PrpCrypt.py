@@ -64,24 +64,48 @@ class PrpCrypt(object):
         生成并加密密码
         """
         length = random.randint(8, 20)
-        letters = string.ascii_letters
-        digits = string.digits
-        symbols = string.punctuation
 
-        char_types = [letters, digits, symbols]
-        selected_types = random.sample(char_types, 2)
+        # 定义字符集
+        letters = string.ascii_letters  # 大小写字母
+        digits = string.digits  # 数字
+        symbols = string.punctuation  # 特殊字符
 
-        password = [random.choice(t) for t in selected_types]
-        all_chars = ''.join(char_types)
-        password += [random.choice(all_chars) for _ in range(length - len(password))]
+        # 随机选择密码格式（两种方案二选一）
+        format_choice = random.choice(['letter_digit', 'symbol_digit'])
+
+        if format_choice == 'letter_digit':
+            # 方案1：字母 + 数字
+            # 确保至少有一个字母和一个数字
+            password = [
+                random.choice(letters),  # 至少一个字母
+                random.choice(digits)  # 至少一个数字
+            ]
+            # 剩余字符从字母和数字中随机选择
+            remaining_pool = letters + digits
+        else:
+            # 方案2：特殊字符 + 数字
+            # 确保至少有一个特殊字符和一个数字
+            password = [
+                random.choice(symbols),  # 至少一个特殊字符
+                random.choice(digits)  # 至少一个数字
+            ]
+            # 剩余字符从特殊字符和数字中随机选择
+            remaining_pool = symbols + digits
+
+        # 补充剩余长度的字符
+        for _ in range(length - len(password)):
+            password.append(random.choice(remaining_pool))
+
+        # 打乱顺序，避免固定格式
         random.shuffle(password)
 
+        # 组合成最终密码
         raw_password = ''.join(password)
-        encrypted = self.encrypt(raw_password)
+        encrypted_s = self.encrypt(raw_password)
 
         if return_plain:
-            return raw_password, encrypted
-        return encrypted
+            return raw_password, encrypted_s
+        return encrypted_s
 
     def save_password_to_mysql(self, plain_text, encrypted_text):
         """
